@@ -1,0 +1,41 @@
+﻿@page "/persons"
+@using Sample_Project.AppContext
+@using Sample_Project.Models
+@using Sample_Project.Services
+<h3>Persons</h3>
+
+
+<table class="table table-responsive table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Person person in Persons)
+        {
+            <tr>
+                <td>@person.Id</td>
+                <td>@person.Name</td>
+                <td>@person.Age</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@code {
+    [Inject]
+    public IPersonService PersonService { get; set; }
+
+    public List<Person> Persons { get; set; } = new List<Person>();
+
+    protected override void OnInitialized()
+    {
+        Persons = PersonService.GetPersons();
+    }
+
+
+}
