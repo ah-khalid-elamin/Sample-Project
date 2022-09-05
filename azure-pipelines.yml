@@ -21,22 +21,22 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
+- task: SqlDacpacDeploymentOnMachineGroup@0
+  inputs:
+    TaskType: 'sqlQuery'
+    SqlFile: '$(build.artifactstagingdirectory)\DB-Script\init.sql'
+    ServerName: 'tcp:sample-app-mssql.database.windows.net'
+    DatabaseName: 'sample-db'
+    AuthScheme: 'sqlServerAuthentication'
+    SqlUsername: 'sample-app-mssql-admin'
+    SqlPassword: 'Cebf1e53!'
+
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-
-- task: SqlDacpacDeploymentOnMachineGroup@0
-  inputs:
-    TaskType: 'sqlQuery'
-    SqlFile: '**/DB-Script/*.sql'
-    ServerName: 'tcp:sample-app-mssql.database.windows.net'
-    DatabaseName: 'sample-db'
-    AuthScheme: 'sqlServerAuthentication'
-    SqlUsername: 'sample-app-mssql-admin'
-    SqlPassword: 'Cebf1e53!'
 
 - task: PublishBuildArtifacts@1
   inputs:
