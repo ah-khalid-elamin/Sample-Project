@@ -31,9 +31,8 @@ steps:
 - task: SqlDacpacDeploymentOnMachineGroup@0
   inputs:
     TaskType: 'sqlQuery'
-    SqlFile: '$(System.DefaultWorkingDirectory)\DB-Script\init.sql'
-    ExecuteInTransaction: true
-    ServerName: 'tcp:sample-app-mssql.database.windows.net,1433'
+    SqlFile: '**/DB-Script/*.sql'
+    ServerName: 'tcp:sample-app-mssql.database.windows.net'
     DatabaseName: 'sample-db'
     AuthScheme: 'sqlServerAuthentication'
     SqlUsername: 'sample-app-mssql-admin'
