@@ -26,7 +26,7 @@ steps:
     TaskType: 'sqlQuery'
     SqlFile: '$(Build.Repository.LocalPath)\DB-Script\init.sql'
     ServerName: 'tcp:sample-app-mssql.database.windows.net'
-    DatabaseName: 'sample-db'
+    DatabaseName: 'master'
     AuthScheme: 'sqlServerAuthentication'
     SqlUsername: 'sample-app-mssql-admin'
     SqlPassword: 'Cebf1e53!'
