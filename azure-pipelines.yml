@@ -25,11 +25,11 @@ steps:
   inputs:
     TaskType: 'sqlQuery'
     SqlFile: '$(Build.Repository.LocalPath)\DB-Script\init.sql'
-    ServerName: 'tcp:sample-app-mssql.database.windows.net'
+    ServerName: '20.9.22.196'
     DatabaseName: 'master'
     AuthScheme: 'sqlServerAuthentication'
-    SqlUsername: 'sample-app-mssql-admin'
-    SqlPassword: 'Cebf1e53!'
+    SqlUsername: 'sa'
+    SqlPassword: 'YhfDH38XqFjS8BG'
 
 - task: VSBuild@1
   inputs:
