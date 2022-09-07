@@ -1,3 +1,6 @@
+use master
+GO
+
 DROP DATABASE  IF Exists "sample-db"
 GO
 
