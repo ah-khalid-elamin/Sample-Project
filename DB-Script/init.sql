@@ -1,6 +1,11 @@
 use master
 GO
 
+ALTER DATABASE "sample-db" 
+SET SINGLE_USER 
+WITH ROLLBACK IMMEDIATE;
+GO
+
 DROP DATABASE  IF Exists "sample-db"
 GO
 
